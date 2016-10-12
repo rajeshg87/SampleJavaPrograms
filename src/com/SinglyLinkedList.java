@@ -60,6 +60,19 @@ public class SinglyLinkedList<T> {
 		return slowNode;
 	}
 	
+	public void reverse(){
+		Node<T> prev = null;
+		Node<T> curr = head;
+		Node<T> next = null;
+		while(curr != null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		head = prev;
+	}
+	
 	public static void main(String args[]){
 		SinglyLinkedList<Integer> list = new SinglyLinkedList<Integer>();
 		list.add(11);
@@ -71,6 +84,9 @@ public class SinglyLinkedList<T> {
 		System.out.println("List Size :"+list.listCount);
 		System.out.println("Middle Element :"+list.findMiddleElement());
 		System.out.println("Last Third Element :"+list.lastThirdElement());
+		System.out.println("======================REVERSE====================");
+		list.reverse();
+		list.traverse();
 	}
 }
 
